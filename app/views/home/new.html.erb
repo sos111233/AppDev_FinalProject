@@ -1,0 +1,55 @@
+<div class="page-header">
+  <h1> Negative Report Issuance <h1>
+</div>
+<div>
+<h3 >Your flight departs on <h3 class="text-danger"><%= @flight_depart %> 
+<%= if @flight_depart_week == 7
+  "(Sunday)"
+  elsif @flight_depart_week == 6
+ "(Saturday)"
+  elsif @flight_depart_week == 5
+ "(Friday)"
+  elsif @flight_depart_week == 4
+ "(Thursday)"
+ elsif @flight_depart_week == 3
+ "(Wednesday)"
+  elsif @flight_depart_week == 2
+ "(Tuesday)"
+   elsif @flight_depart_week == 1
+ "(Monday)"
+end %></h3>
+<div>
+<h3>The proof of negative report will be good if issued after <h3 class="text-success">
+
+<%= if @flight_depart_week == 7
+  @flight_depart.to_date - 4.days
+  elsif @flight_depart_week == 6
+  @flight_depart.to_date - 3.days
+  elsif @flight_depart_week == 5
+  @flight_depart.to_date - 3.days
+  elsif @flight_depart_week == 4
+  @flight_depart.to_date - 3.days
+  elsif @flight_depart_week == 3
+  @flight_depart.to_date - 5.days
+  elsif @flight_depart_week == 2
+  @flight_depart.to_date - 5.days
+  elsif @flight_depart_week == 1
+  @flight_depart.to_date - 5.days
+end %> (included) </h3> <h3> and before borading if there is no holidays before departure. </h3>
+</div>
+<br/>
+<form class="form-inline" method="post" action= "/home/date=<%=@flight_depart%>">
+  <div class="form-group">
+  <label for="holiday"><h3 class="text-primary">The number of holiday(s) before your flight depature:</h3> </label>
+  <input type="text" class="form-control" placeholder="Enter # of holidays" name="holiday" id="holiday">
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-success">Submit</button>
+  <a href= "/home" class="btn btn-info" role="button"> Select a new date </a>
+</form>
+<br/>
+<p> "Note: The calculator automatically considers Saturday and Sunday as non-business days." </p>
+</div>
+
+
+
