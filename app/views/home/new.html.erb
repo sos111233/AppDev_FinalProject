@@ -37,6 +37,14 @@ end %></h3>
   @flight_depart.to_date - 5.days
 end %> (included) </h3> <h3> and before borading if there is no holidays before departure. </h3>
 </div>
+
+<div class="container text-center">
+<h1> Selet holidays prior to departure </h1>
+</div>
+<%= month_calendar do |date| %>
+  <%= link_to date.day,:controller=>"application", :action=> "show",:date=> date%>
+<% end %>
+
 <br/>
 <form class="form-inline" method="post" action= "/home/date=<%=@flight_depart%>">
   <div class="form-group">

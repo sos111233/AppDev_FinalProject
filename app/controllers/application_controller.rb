@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+   
   def index
     render({:template=>"home/input.html.erb" })
     end
@@ -16,5 +17,18 @@ class ApplicationController < ActionController::Base
     @weekend_factor = (@number_of_holidays.to_i+3-1)/5
     render({:template=>"home/holiday.html.erb" })
   end
+
+  def home
+    render ({:template=>"home/home.html.erb" })
+  end
+
+  def flatpickr
+    @holidays = params[:holidays]
+    @flight =params[:flight]
+    @weekend = [6,7]
+    @count = 0
+    render ({:template=>"home/flatpickr.html.erb" }) 
+  
+  end 
 
 end

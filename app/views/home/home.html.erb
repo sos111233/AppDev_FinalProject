@@ -1,0 +1,83 @@
+<head>
+  <title>Using Flatpickr</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/themes/dark.css">
+<style>
+body { text-align: center;background: #9ba8ae;}
+h1 { font-weight: bold; font-size: 40px;color: #ffffff; }
+h2 { font-size: 24px;color: #ffffff; }
+P {font-style: italic;}
+img { width: 50px;border-radius: 50px;}
+input { border: 2px solid whitesmoke;border-radius: 20px; padding: 12px 10px; text-align: center; width: 250px;}
+button { border: none; border-radius: 10px; padding: 12px 10px; text-align: center; cursor: pointer;  background: coral; color: whitesmoke;}
+</style>
+</head>
+<body>
+
+
+ <h1> Covid Test Result <br/>Date Calculator </h1>
+  <hr>
+  
+  <div>
+    <h2>Select Holiday(s)</h2>
+  
+    <form method="get" action= "/result">
+    <input type="text" id="basicDate" name="holidays" placeholder="Please select holiday(s)" data-input>
+    
+    
+    <h2>Select Depature</h2>
+    
+    <input type="text" id="basicDate1" name="flight" placeholder="Please select flight departure" data-input>
+    <br/><br/>
+    <button class="input-button" title="clear" data-clear>Submit</button></form>
+
+  </div>
+  <br/>
+  <p> Note: The calculator automaticaly considers weekneds as non-business days. <p>
+  <p> Disclaimer: The calculator is for reference only. Should you have any questions, please contact 1922 for more info.
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.2.3/flatpickr.js"></script>
+  <script>
+$("#basicDate").flatpickr({
+    mode: "multiple",
+    dateFormat: "Y-m-d",
+       "disable": [
+        function(date) {
+            // return true to disable
+            return (date.getDay() === 0 || date.getDay() === 6);
+        }
+    ],
+    "locale": {
+        "firstDayOfWeek": 1 // start week on Monday
+    }
+});
+
+$("#basicDate1").flatpickr({
+dateFormat: "Y-m-d",
+    "locale": {
+        "firstDayOfWeek": 1 // start week on Monday
+    }
+});
+
+$("#rangeDate").flatpickr({
+    mode: 'range',
+    dateFormat: "Y-m-d"
+});
+$("#timePicker").flatpickr({
+    enableTime: true,
+    noCalendar: true,
+    time_24hr: true,
+    dateFormat: "H:i",
+});
+$(".resetDate").flatpickr({
+    wrap: true,
+    weekNumbers: true,
+});
+
+
+  </script>
+
+</body>
+
